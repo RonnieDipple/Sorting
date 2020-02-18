@@ -25,11 +25,17 @@ Think back to class or team picture day. Everyone stands in a line facing the ph
 
 
 ### Real-World Applications
-The answer to the question, "Is ***Insertion Sort*** an efficient algorithm?" is not always the same. The runtime of ***Insertion Sort*** is dependent on how close to being "in-order" the data is to begin with. In a scenario where you are performing ***Insertion Sort*** on an already or mostly sorted array, very few elements will need to be shifted over, leading to a runtime of Ω(n). However, in a worse-case scenario, where the maximum number of shifts are being performed, the runtime of this algorithm is O(n²).
+The answer to the question, "Is ***Insertion Sort*** an efficient algorithm?" 
+is not always the same. The runtime of ***Insertion Sort*** is dependent on how close to being "in-order" 
+the data is to begin with. In a scenario where you are performing ***Insertion Sort*** on an already or mostly sorted array, 
+very few elements will need to be shifted over, leading to a runtime of Ω(n). 
+However, in a worse-case scenario, where the maximum number of shifts are being performed, 
+the runtime of this algorithm is O(n²).
 
 
 ## Bubble Sort
-In **Bubble Sort**, we make a series of swaps between adjacent elements, gradually moving larger elements towards the end of the array (or _bubbling_ larger elements up).
+In **Bubble Sort**, we make a series of swaps between adjacent elements, 
+gradually moving larger elements towards the end of the array (or _bubbling_ larger elements up).
 
 ### Algorithm
 1. Loop through your array
@@ -38,16 +44,25 @@ In **Bubble Sort**, we make a series of swaps between adjacent elements, gradual
 2. If no swaps performed, stop. Else, go back to the element at index 0 and repeat step 1.
 
 ### Real-World Applications
-***Bubble Sort*** is not ideal for many real-world applications. If a small element that _should_ be at the beginning of our array is originally located near the end, it will take a long time to move it into its correct position.
+***Bubble Sort*** is not ideal for many real-world applications. 
+If a small element that _should_ be at the beginning of our array is originally located near the end, 
+it will take a long time to move it into its correct position.
 
-However, it should be noted that if you perform **Bubble Sort** on an array that's already sorted, it will only require a single pass through the array, making its best-case performance linear. It's also very simple to implement.
+However, it should be noted that if you perform **Bubble Sort** on an array that's already sorted, 
+it will only require a single pass through the array, making its best-case performance linear. 
+It's also very simple to implement.
 
 ### Your Task
 - Complete `bubble_sort()` in `iterative_sorting.py`.
 
 
 ## Selection Sort
-***Selection Sort*** is an algorithm that many of you have probably used before when sorting things in your everyday lives. Imagine that you have several books you want to arrange on a shelf from shortest to tallest. You start off by looking for the shortest book, and when you find it, put it on the far left side of the shelf. Then, you look for the second shortest book and insert it directly to the right of the first book. You repeat this process, selecting the next shortest book and moving it next to the most recently placed book, until you have moved all books into the correct place. This is ***Selection Sort***.  
+***Selection Sort*** is an algorithm that many of you have probably used before when sorting things in your everyday lives. 
+Imagine that you have several books you want to arrange on a shelf from shortest to tallest. 
+You start off by looking for the shortest book, and when you find it, put it on the far left side of the shelf. 
+Then, you look for the second shortest book and insert it directly to the right of the first book. 
+You repeat this process, selecting the next shortest book and moving it next to the most recently placed book, 
+until you have moved all books into the correct place. This is ***Selection Sort***.  
 
 An example of this algorithm being applied to an array with 10 numerical elements can be seen in the video below.
 
@@ -68,9 +83,12 @@ An example of this algorithm being applied to an array with 10 numerical element
 
 
 ### Real-World Applications
-While ***Selection Sort*** is one of the easier sorting algorithms to understand and implement, it has one major drawback - its efficiency.
+While ***Selection Sort*** is one of the easier sorting algorithms to understand and implement, 
+it has one major drawback - its efficiency.
 
-Recall that the runtime complexity of an algorithm, often expressed using *Big O notation*, tells us how the amount of operations our algorithm requires will grow as the size of our input grows. ***Selection Sort*** has  a runtime of O(n²), making it impractical to use with many large, real-world data sets.
+Recall that the runtime complexity of an algorithm, often expressed using *Big O notation*, 
+tells us how the amount of operations our algorithm requires will grow as the size of our input grows. 
+***Selection Sort*** has  a runtime of O(n²), making it impractical to use with many large, real-world data sets.
 
 ### Your Task
 - Complete the missing parts of `selection_sort()` in `iterative_sorting.py`.
@@ -91,3 +109,30 @@ Look into Counting Sort.
 
 ### You Might be Surprised at What Passes for a Sorting Algorithm
 - Explore Bogo Sort and summarize how it works in a couple of sentences.
+Bogo sort also known as stupid sort or slowsort which say's it all really
+sudo code for bogo
+while not isInOrder(deckOfCards)
+    shuffle(deckOfCards)
+    
+Interesting algorithms
+Gorosort
+is a sorting algorithm introduced in the 2011 Google Code Jam. 
+As long as the list is not in order, a subset of all elements is randomly permuted. 
+If this subset is optimally chosen each time this is performed, 
+the expected value of the total number of times this operation needs to be done is equal to the number of misplaced elements.
+Bogobogosort
+is an algorithm that was designed not to succeed before the heat death of the universe on any sizable list. 
+It works by recursively calling itself with smaller and smaller copies of the beginning of the list to see if they are sorted. 
+The best case is a single element, which is always sorted. For other cases, 
+it compares the last element to the maximum element from the previous elements in the list. 
+If the last element is greater or equal, it checks if the order of the copy matches the previous version, 
+copies back if not, and returns. Otherwise, it reshuffles the current copy of the list and goes back to its recursive check.
+Bozosort
+is another sorting algorithm based on random numbers. 
+If the list is not in order, it picks two items at random and swaps them, then checks to see if the list is sorted. 
+The running time analysis of a bozosort is more difficult, 
+but some estimates are found in H. Gruber's analysis of "perversely awful" randomized sorting algorithms.
+O(n!) is found to be the expected average case.
+
+
+BOZO SORT IS MY FAV
