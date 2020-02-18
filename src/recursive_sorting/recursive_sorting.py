@@ -67,22 +67,121 @@ def merge_sort(arr):
 #time complexity of the Merge Sort algorithm is O(nlog(n)).
 
 
-# STRETCH: implement an in-place merge sort algorithm
+# STRETCH: implement an in-place merge sort algorithm # Reference https://www.geeksforgeeks.org/in-place-merge-sort/
 def merge_in_place(arr, start, mid, end):
-    L = arr[start:mid]
-    R = arr
 
+    start2 = mid + 1
+
+    # If the array is already sorted
+    if (arr[mid] <= arr[start2]):
+        return arr
+
+    # Two pointers to maintain start
+    # of both arrays to merge
+    while start <= mid and start2 <= end:
+
+        # If element 1 is in right place
+        if arr[start] <= arr[start2]:
+            start += 1
+
+        else:
+            value = arr[start2]
+            index = start2
+
+            # Shift all the elements between element 1
+            # element 2, right by 1.
+            while index != start:
+                arr[index] = arr[index - 1]
+                index -= 1
+
+            arr[start] = value
+
+            # Update all the pointers
+            start += 1
+            mid += 1
+            start2 += 1
 
     return arr
 
 
+# l is for left index and r is right index of the
+# sub array of arr aka array to be sorted
 def merge_sort_in_place(arr, l, r):
-    # TO-DO
+    if l < r:
+
+        m = l + (r - l) // 2 # m = left + (right minus left) divided by two
+
+        # Sort first and second halves
+        merge_sort_in_place(arr, l, m)
+        merge_sort_in_place(arr, m + 1, r)
+
+        merge_in_place(arr, l, m, r)
 
     return arr
 
 
 # STRETCH: implement the Timsort function below
 # hint: check out https://github.com/python/cpython/blob/master/Objects/listsort.txt
-def timsort(arr):
+# This ones better https://www.codespeedy.com/timsort-algorithm-implementation-in-python/
+minrun = 32
+
+
+def InsSort(arr, start, end):
+    for i in range(start + 1, end + 1):
+        elem = arr[i]
+        j = i - 1
+        while j >= start and elem < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = elem
+    return arr
+
+
+def merge(arr, start, mid, end):
+    if mid == end:
+        return arr
+    first = arr[start:mid + 1]
+    last = arr[mid + 1:end + 1]
+    len1 = mid - start + 1
+    len2 = end - mid
+    ind1 = 0
+    ind2 = 0
+    ind = start
+
+    while ind1 < len1 and ind2 < len2:
+        if first[ind1] < last[ind2]:
+            arr[ind] = first[ind1]
+            ind1 += 1
+        else:
+            arr[ind] = last[ind2]
+            ind2 += 1
+        ind += 1
+
+    while ind1 < len1:
+        arr[ind] = first[ind1]
+        ind1 += 1
+        ind += 1
+
+    while ind2 < len2:
+        arr[ind] = last[ind2]
+        ind2 += 1
+        ind += 1
+
+    return arr
+
+
+def TimSort(arr):
+    n = len(arr)
+
+    for start in range(0, n, minrun):
+        end = min(start + minrun - 1, n - 1)
+        arr = InsSort(arr, start, end)
+
+    curr_size = minrun
+    while curr_size < n:
+        for start in range(0, n, curr_size * 2):
+            mid = min(n - 1, start + curr_size - 1)
+            end = min(n - 1, mid + curr_size)
+            arr = merge(arr, start, mid, end)
+        curr_size *= 2
     return arr
